@@ -9,45 +9,116 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Fungsi untuk menghitung kembalian
-int kembalianUang(...){
-    // isi dengan program untuk menghitung kembalian
-    // silahkan lengkapi parameter fungsi ini
+int kembalianUang(int totalHarga, int pembayaran){
+    int kembalian;
+    kembalian = pembayaran - totalHarga;
+    return kembalian;
 }
 
-// Fungsi untuk menghitung kembalian
-int penghitungKembalian(..., int *seratus, int *limaPuluh, int *duaPuluh, int *sepuluh, int *lima, int *dua, int *satu, int *koin){
-    // isi dengan program untuk memisahkan lembaran uang
-    // silahkan lengkapi dan boleh menambahkan parameter fungsi ini bila diperlukan
+int penghitungKembalian(int kembalian, int *seratus, int *limaPuluh, int *duaPuluh, int *sepuluh, int *lima, int *dua, int *satu, int *koin){
+    while (kembalian != 0){
+        if (kembalian >= 100000){
+            *seratus += 1;
+            kembalian -= 100000;
+        }
+        else if (kembalian >= 50000){
+            *limaPuluh += 1;
+            kembalian -= 50000;
+        }
+        else if (kembalian >= 20000){
+            *duaPuluh += 1;
+            kembalian -= 20000;
+        }
+        else if (kembalian >= 10000){
+            *sepuluh += 1;
+            kembalian -= 10000;
+        }
+        else if (kembalian >= 5000){
+            *lima += 1;
+            kembalian -= 5000;
+        }
+        else if (kembalian >= 2000){
+            *dua += 1;
+            kembalian -= 2000;
+        }
+        else if (kembalian >= 1000){
+            *satu += 1;
+            kembalian -= 1000;
+        }
+        else {
+            *koin += 1;
+            kembalian -= 1;
+        }
+    }
 }
 
-// Fungsi untuk menampilkan kembalian
 void printKembalian(int *seratus, int *limaPuluh, int *duaPuluh, int *sepuluh, int *lima, int *dua, int *satu, int *koin){
-    // isi dengan program untuk menampilkan kembalian
-    // boleh menambahkan parameter fungsi ini bila diperlukan
-
-    /* Contoh output
-    printf("%d lembar uang 1.000\n", ...);
-    printf("%d uang koin\n", ...);
-    */
+    if (*seratus != 0){
+        printf("%d lembar uang 100.000\n", *seratus);
+    }
+    if (*limaPuluh != 0){
+        printf("%d lembar uang 50.000\n", *limaPuluh);
+    }
+    if (*duaPuluh != 0){
+        printf("%d lembar uang 20.000\n", *duaPuluh);
+    }
+    if (*sepuluh != 0){
+        printf("%d lembar uang 10.000\n", *sepuluh);
+    }
+    if (*lima != 0){
+        printf("%d lembar uang 5.000\n", *lima);
+    }
+    if (*dua != 0){
+        printf("%d lembar uang 2.000\n", *dua);
+    }
+    if (*satu != 0){
+        printf("%d lembar uang 1.000\n", *satu);
+    }
+    if (*koin != 0){
+        printf("%d uang koin\n", *koin);
+    }
 }
 
 int main(){
     printf("-- Program Penghitung Kembalian --\n\n");
 
+    int seratus = 0;
+    int limaPuluh = 0;
+    int duaPuluh = 0;
+    int sepuluh = 0;
+    int lima = 0; 
+    int dua = 0;
+    int satu = 0;
+    int koin = 0;
+    int totalHarga, pembayaran, tambahBayar, kembalian;
+
     // input total harga barang
     printf("Masukkan total harga barang  : ");
+    scanf("%d",&totalHarga);
     
     // input pembayaran
     printf("Masukkan pembayaran customer : ");
+    scanf("%d",&pembayaran);
 
-    // input pembayaran tambahan
-    printf("Masukkan tambahan pembayaran : ");
+    // output kembalian [silahkan gunakan perkondisian]
+    while (pembayaran < totalHarga){
+        printf("Pembayaran tidak cukup!\n");
+        printf("Masukkan tambahan pembayaran : ");
+        scanf("%d",&tambahBayar);
+        pembayaran += tambahBayar;
+    }
+    
+    if (pembayaran == totalHarga){
+        printf("Tidak ada kembalian!\n");
+    }
 
-    // output kembalian (silahkan gunakan perkondisian)
-    printf("Pembayaran tidak cukup!\n");
-    printf("Tidak ada kembalian!\n");
-    printf("Kembaliannya adalah\n");
+    else {
+        kembalian = kembalianUang(totalHarga, pembayaran);
+        penghitungKembalian(kembalian, &seratus, &limaPuluh, &duaPuluh, &sepuluh, &lima, &dua, &satu, &koin);
+
+        printf("Kembaliannya adalah\n");
+        printKembalian(&seratus, &limaPuluh, &duaPuluh, &sepuluh, &lima, &dua, &satu, &koin);
+    }
 
     return 0;
 }
