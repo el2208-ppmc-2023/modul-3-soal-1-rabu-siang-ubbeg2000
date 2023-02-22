@@ -1,0 +1,104 @@
+{
+  "tests": [
+    {
+      "name": "1",
+      "setup": "make main",
+      "run": "./main",
+      "input": "12980\r\n250000",
+      "output": "2 lembar uang 100.000\r\n1 lembar uang 20.000\r\n1 lembar uang 10.000\r\n1 lembar uang 5.000\r\n1 lembar uang 2.000\r\n20 uang koin",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "2",
+      "setup": "make main",
+      "run": "./main",
+      "input": "30\r\n10\r\n30",
+      "output": "10 uang koin",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "3",
+      "setup": "",
+      "run": "./main",
+      "input": "5000\r\n1000\r\n2000\r\n2000",
+      "output": "Pembayaran tidak cukup!",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "4",
+      "setup": "",
+      "run": "./main",
+      "input": "10000\r\n10000",
+      "output": "Tidak ada kembalian!",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "5",
+      "setup": "",
+      "run": "./main",
+      "input": "8000\r\n16000",
+      "output": "1 lembar uang 5.000\r\n1 lembar uang 2.000\r\n1 lembar uang 1.000",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "6",
+      "setup": "",
+      "run": "./main",
+      "input": "25000\r\n20000\r\n5000",
+      "output": "Tidak ada kembalian!",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "7",
+      "setup": "",
+      "run": "./main",
+      "input": "7000\r\n1000\r\n2000\r\n5000",
+      "output": "1 lembar uang 1.000",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "8",
+      "setup": "",
+      "run": "./main",
+      "input": "50\r\n1\r\n46\r\n3",
+      "output": "Pembayaran tidak cukup!",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "9",
+      "setup": "",
+      "run": "./main",
+      "input": "17000\r\n20000",
+      "output": "1 lembar uang 2.000\r\n1 lembar uang 1.000",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "10",
+      "setup": "",
+      "run": "./main",
+      "input": "12500\r\n60000",
+      "output": "2 lembar uang 20.000\r\n1 lembar uang 5.000\r\n1 lembar uang 2.000\r\n500 uang koin",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    }
+  ]
+}
